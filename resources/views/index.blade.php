@@ -389,7 +389,7 @@
                 </div>
             </div>
             @php
-                $gallery = App\Models\Gallery::where('status', 1)->get();
+                $gallery = App\Models\Gallery::where('status', 1)->where('display_in_home',1)->orderby('id','desc')->get()->take(20);
             @endphp
             <div class="row g-4">
                 <section id="gallery">

@@ -86,7 +86,7 @@ class ContentController extends Controller
     public function gallery(Request $request)
     {
         // dd("ok");
-        $gallery = Gallery::where('status',1)->get();
+        $gallery = Gallery::where('status',1)->orderby('id','desc')->paginate(20);
         return view('content.gallery', compact('gallery'));
     }
 

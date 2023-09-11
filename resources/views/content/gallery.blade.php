@@ -183,7 +183,9 @@
                                 </div>
                             @endforelse
                         </div>
+
                     </div>
+                    {{ $gallery->links() }}
                 </div>
             </div>
 

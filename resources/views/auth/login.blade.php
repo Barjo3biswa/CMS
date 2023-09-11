@@ -74,7 +74,8 @@
     <!-- /.login-logo -->
     <div class="card card-outline card-primary">
         <div class="card-header text-center">
-            <h4><b>Jorhat Institute of Science & Technology </b></h4>
+            <h4><b>ARMY PUBLIC SCHOOL, Narangi, Guwahati
+                 </b></h4>
         </div>
         <div class="card-body">
             <p class="login-box-msg"> <b>Admin Panel</b> </p>

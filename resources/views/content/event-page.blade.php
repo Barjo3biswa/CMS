@@ -44,7 +44,7 @@
                                     {{date('d-m-Y', strtotime($list->date))}}
                                 </span>
                                 <a href="#">
-                                    {{$list->details}}
+                                    {{$list->description}}
                                 </a>
                             </li>
                         @empty
