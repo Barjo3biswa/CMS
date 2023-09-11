@@ -120,7 +120,14 @@ class EventController extends Controller
      */
     public function edit($id)
     {
-        //
+        try {
+            $decrypted = Crypt::decrypt($id);
+        } catch (\Exception $e) {
+
+        }
+        $news_sections = NewsSection::orderBy('name','asc')->get();
+        $record = Event::where('id',$decrypted)->first();
+        return view('admin.news_events.edit',compact('record','news_sections'));
     }
 
     /**
@@ -132,7 +139,70 @@ class EventController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $decrypted = Crypt::decrypt($id);
+        } catch (\Exception $e) {
+
+        }
+        // dd($decrypted);
+        $request->validate([
+            'title' => 'required',
+            'date' => 'required',
+            'news_section_id' => 'required',
+            'type' => 'required',
+        ]);
+
+        DB::beginTransaction();
+        try {
+            $news_section_ids = implode(',', $request->input('news_section_id'));
+            $event = Event::where('id',$decrypted)
+            ->update([
+                'title' => $request->title,
+                'date' => $request->date,
+                'news_type_id' => $news_section_ids,
+                'news_type' => $request->type,
+                'description' => $request->description,
+            ]);
+            // dd($event);
+                if ($request->type == '1') {
+                    $file = $request->file('file');
+                    $name = time() . '.' . $file->getClientOriginalExtension();
+                    $finfo = new \finfo(FILEINFO_MIME_TYPE);
+                    $mime_type = $finfo->file($request->file('file'));
+                    if (substr_count($request->file('file'), '.') > 1) {
+                        return redirect()->back()->with('error', 'Doube dot in filename');
+                    }
+                    if ($mime_type != "application/pdf" && $mime_type != "application/vnd.ms-excel" && $mime_type != "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" && $mime_type != "application/zip" && $mime_type != "application/vnd.rar") {
+                        return redirect()->back()->with('error', 'File type not allowed');
+                    }
+                    $extension = $request->file('file')->getClientOriginalExtension();
+                    if ($extension != "pdf" && $extension != "xls" && $extension != "xlsx" && $extension != "zip" && $extension != "rar") {
+                        return redirect()->back()->with('error', 'File type not allowed');
+                    }
+                    $filename = 'uploads/event/' . $name;
+                    $file->move('uploads/event/', $name);
+                    Event::where('id',$decrypted)->update([
+                        'pdf_file' => $filename,
+                    ]);
+                } elseif ($request->type == '2') {
+                    // dd($request->file);
+                    Event::where('id',$decrypted)->update([
+                        'url' => $request->url,
+                    ]);
+                } elseif ($request->type == '3') {
+                    Event::where('id',$decrypted)->update([
+                        'details' => $request->details,
+                    ]);
+                }
+                // dd("ok");
+            DB::commit();
+            return redirect()->back()->with('success', 'Notification Uploaded');
+        } catch (\Throwable $th) {
+            dd($th);
+            DB::rollback();
+            return redirect()->back()->with('error', 'Something went wrong');
+        }
+
     }
 
     /**
@@ -143,6 +213,12 @@ class EventController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $decrypted = Crypt::decrypt($id);
+        } catch (\Exception $e) {
+
+        }
+        Event::where('id',$decrypted)->delete();
+        return redirect()->back()->with('success','Successfully Deleted');
     }
 }

@@ -39,8 +39,9 @@ class ContentController extends Controller
         $menu_id = Crypt::decrypt($menu_id);
         $submenu_id = Crypt::decrypt($submenu_id);
         $content = Content::with('menu','sub_menu','sub_category')->where('menu_id',$menu_id)->where('submenu_id',$submenu_id)->first();
-        // dd($content);
-        return view('content.page',compact('content'));
+        $menu = Menu::where('id',$menu_id)->first();
+        // dd($menu->sub_menu);
+        return view('content.page',compact('content','menu'));
     }
 
 
@@ -86,7 +87,7 @@ class ContentController extends Controller
     public function gallery(Request $request)
     {
         // dd("ok");
-        $gallery = Gallery::where('status',1)->orderby('id','desc')->paginate(20);
+        $gallery = Gallery::where('status',1)->orderby('id','desc')->paginate(2);
         return view('content.gallery', compact('gallery'));
     }
 

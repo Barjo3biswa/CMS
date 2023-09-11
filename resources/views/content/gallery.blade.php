@@ -185,10 +185,12 @@
                         </div>
 
                     </div>
-                    {{ $gallery->links() }}
+
                 </div>
             </div>
 
         </div>
     </div>
+    {{ $gallery->appends(request()->all())->links() }}
+    {{-- {{ $gallery->links() }} --}}
 @endsection

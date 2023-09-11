@@ -182,7 +182,7 @@ body {
         position: relative;
         min-height: 450px;
     }
-    
+
     #header-carousel .carousel-item img {
         position: absolute;
         width: 100%;
@@ -385,13 +385,13 @@ body {
     overflow: hidden;
     transition: transform .3s;
   }
-  
+
   .thumbnails img {
     width: 100%;
     object-fit: cover;
     object-position: 50% 20%;
   }
-  
+
   .black {
     text-align: center;
     background: #000;
@@ -402,7 +402,7 @@ body {
     position: absolute;
     opacity: .9;
   }
-  
+
   .title {
     color: #fff;
     padding: 2rem 0;
@@ -663,7 +663,7 @@ thead, tbody, tfoot, tr, td, th {border-color: #eee!important;}
     /* padding: 0 1.5rem; */
     display: grid;
     grid-template-columns: 3fr 2fr 1fr;
-    margin: 0 1rem;  
+    margin: 0 1rem;
     align-items: center;
 }
 @media (min-width: 768px) {
@@ -823,7 +823,7 @@ thead, tbody, tfoot, tr, td, th {border-color: #eee!important;}
 .sidebar-ul li a {color:#fff;}
 .thead-dark {background-color: #23378a;}
 .thead-dark th {color:#fff;}
-.sidebar-ul li .active {color: #fd940c;font-weight: 600;letter-spacing: .5px;} 
+.sidebar-ul li .active {color: #fd940c;font-weight: 600;letter-spacing: .5px;}
 thead, tbody, tfoot, tr, td, th {
     color: #484848;
     font-size: 14px;
@@ -939,15 +939,15 @@ thead, tbody, tfoot, tr, td, th {
     color: #222222;
     letter-spacing: .4px;background: #ffcc8b;font-size: 12px;}
   .bar_content {
-    display: block; 
-  
+    display: block;
+
     width: 100%;
     transform: translateX(100%);
     animation: move 30s linear infinite;
     white-space: nowrap;
     margin-right: 44px;
   }
-  
+
   @keyframes move {
     to { transform: translateX(-100%); }
   }
@@ -1085,5 +1085,18 @@ thead, tbody, tfoot, tr, td, th {
     padding: 6px;
     border-radius: 10px;
     background-image: linear-gradient(to right, #dadada, #fff);
+}
+.page-header1 {height: 250px;}
+.page-header-text {
+    height: 250px;
+}
+.page-header-text .image-container {
+    height: 250px;
+}
+.page-header1 .image-container img {
+    height: 100%;
+    width: 100%!important;
+    object-fit: cover;
+    object-position: top;
 }
 /* New code end */

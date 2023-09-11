@@ -31,7 +31,7 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Name</label>
-                                <input type="text" class="form-control" name="name" placeholder="Enter email">
+                                <input type="text" class="form-control" name="name" placeholder="Enter Name">
                             </div>
 
                             <div class="form-check">

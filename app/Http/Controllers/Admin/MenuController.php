@@ -43,6 +43,7 @@ class MenuController extends Controller
      */
     public function store(Request $request)
     {
+        // dd("ok");
         $request->validate([
             'name'=> 'required',
         ]);
@@ -56,7 +57,7 @@ class MenuController extends Controller
 
             $menu = Menu::create([
                 'name' => $request->name,
-                'sublink' => $request->sublink,
+                'sublink' => $request->sublink??0,
                 'slug' => Str::slug($request->name),
             ]);
             if ($request->file) {
@@ -86,7 +87,7 @@ class MenuController extends Controller
             DB::commit();
             return redirect()->route('admin.menu.index')->with('success','Data added Successfully');;
         } catch (\Throwable $th) {
-            //throw $th;
+        //    dd($th);
             DB::rollback();
             return redirect()->back()->withInput()->with('error', 'Menu creation failed');
         }

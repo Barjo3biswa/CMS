@@ -25,7 +25,7 @@ class GalleryController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
+        dd($request->all());
         $request->validate([
             'file' => 'required | image | mimes:jpeg,png,jpg | max:5000',
             'file_name' =>'required',
@@ -60,6 +60,16 @@ class GalleryController extends Controller
                     'display_in_home' => $request->display_in_home,
                 ]);
             }
+            if ($request->display_in_home) {
+                $slider->update([
+                    'display_in_sports' => $request->display_in_sports,
+                ]);
+            }
+            if ($request->display_in_home) {
+                $slider->update([
+                    'display_in_co_cur' => $request->display_in_cur,
+                ]);
+            }
             DB::commit();
             return redirect()->back()->with('success', 'Gallery Image Added');
         } catch (\Throwable $th) {
@@ -78,6 +88,7 @@ class GalleryController extends Controller
      */
     public function publish($id)
     {
+
         DB::beginTransaction();
         try {
             $id = Crypt::decrypt($id);

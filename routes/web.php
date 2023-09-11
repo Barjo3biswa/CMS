@@ -75,6 +75,9 @@ Route::group(['prefix' => 'notification'], function () {
     Route::get('/create', [App\Http\Controllers\Admin\EventController::class, 'create'])->name('admin.notification.create');
     Route::post('/store', [App\Http\Controllers\Admin\EventController::class, 'store'])->name('admin.notification.store');
     Route::get('/index', [App\Http\Controllers\Admin\EventController::class, 'index'])->name('admin.notification.index');
+    Route::get('/edit/{id}', [App\Http\Controllers\Admin\EventController::class, 'edit'])->name('admin.notification.edit');
+    Route::post('/update/{id}', [App\Http\Controllers\Admin\EventController::class, 'update'])->name('admin.notification.update');
+    Route::get('/delete/{id}', [App\Http\Controllers\Admin\EventController::class, 'destroy'])->name('admin.notification.delete');
 
 });
 

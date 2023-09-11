@@ -40,9 +40,7 @@
                     </li>
                 @else
                     <li class="nav-item">
-                        <a class="nav-link" href="#" id="navbarDropdown" role="button">
-                            {{$menu->name}}
-                        </a>
+
                     </li>
                 @endif
                 @endforeach
@@ -71,7 +69,11 @@
         <!-- <a href="about.html" class="nav-item nav-link">About Us</a> -->
         @foreach ($menus as $menues)
             <div class="nav-item dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">{{$menues->name}}</a>
+                @if ($menues->sublink == 0)
+                    <a class="nav-link" href="#" id="navbarDropdown" role="button">{{$menues->name}}</a>
+                @else
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">{{$menues->name}}</a>
+                @endif
                 <div class="dropdown-menu bg-light1 m-0">
                     @foreach ($menues->sub_menu as $sub_men)
                         <a href="{{route('menu.content',[Crypt::encrypt($menues->id),Crypt::encrypt($sub_men->id)])}}" class="dropdown-item">{{$sub_men->name}}</a>
@@ -79,6 +81,15 @@
                 </div>
             </div>
         @endforeach
+
+        {{-- <div class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Administration</a>
+            <div class="dropdown-menu bg-light1 m-0">
+                <a href="#" class="dropdown-item">School Administration & Management Committee</a>
+                <a href="#" class="dropdown-item">Teaching Fraternity</a>
+            </div>
+        </div> --}}
+
         <a href="{{route('gallery')}}" class="nav-item nav-link">Gallery</a>
     </div>
 </div>

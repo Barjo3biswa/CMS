@@ -104,7 +104,7 @@
             <div class="row g-5">
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="row gy-5 gx-4">
-                        <h6 class="text-body display-7 text-uppercase mb-4">Message from the Chairman's Desk</h6>
+                        {{-- <h6 class="text-body display-7 text-uppercase mb-4">Message from the Chairman's Desk</h6>
                         <div class="msg-principal mt-0">
                             <div class="msg-para">
                                 <p style="text-align: justify;">Lorem ipsum, dolor sit amet consectetur adipisicing
@@ -116,7 +116,7 @@
                             <div class="principal-img">
                                 <img src="{{asset('new-images/default-img.png')}}" alt="">
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="mb-5">
                             <h6 class="text-body display-7 text-uppercase mb-4">Message from the Principal's Desk</h6>
                             <div class="msg-principal">

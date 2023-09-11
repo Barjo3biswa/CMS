@@ -48,6 +48,16 @@
                                 <input type="checkbox" style="margin-left:2rem;" name="display_in_home" value="1">
                             </div>
 
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Display in Sports</label>
+                                <input type="checkbox" style="margin-left:2rem;" name="display_in_sports" value="2">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Display in co-curricular</label>
+                                <input type="checkbox" style="margin-left:2rem;" name="display_in_cur" value="3">
+                            </div>
+
                         </div>
                         <div class="card-footer">
                             <div class="text-center">

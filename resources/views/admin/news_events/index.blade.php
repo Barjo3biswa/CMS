@@ -73,10 +73,10 @@
                                         @endif
                                     </td>
                                     <td class="d-flex">
-                                        <a href="{{route('admin.tender.edit',Crypt::encrypt($event->id))}}"
+                                        <a href="{{route('admin.notification.edit',Crypt::encrypt($event->id))}}"
                                             class="btn btn-info btn-xs mr-1"><i class="fa fa-pen"></i></a>
 
-                                        <a href="{{route('admin.tender.delete',Crypt::encrypt($event->id))}}"
+                                        <a href="{{route('admin.notification.delete',Crypt::encrypt($event->id))}}"
                                             class="btn btn-danger btn-xs" onclick="return confirm('Are you sure?')"><i
                                                 class="fa fa-trash"></i></a>
 
